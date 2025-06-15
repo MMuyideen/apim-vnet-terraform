@@ -21,7 +21,7 @@ This repository contains Terraform code to deploy a secure Azure environment wit
 1. **Clone the repository:**
    ```bash
    git clone <repo-url>
-   cd apim
+   cd apim-vnet-terraform
    ```
 
 2. **Configure your variables:**
@@ -78,4 +78,3 @@ terraform destroy
 
 - [Terraform Azure Provider Documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
 - [Azure API Management Documentation](https://docs.microsoft.com/en-us/azure/api-management/)
--
