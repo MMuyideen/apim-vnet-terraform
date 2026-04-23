@@ -1,5 +1,5 @@
 module "vm_password" {
-  source          = "./modules/password"
+  source          = "git::https://github.com/mmuyideen/terraform-modules-and-pipelines.git//modules/password?ref=main"
   password_length = 20
 }
 
