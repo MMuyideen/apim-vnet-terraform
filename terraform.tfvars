@@ -2,8 +2,6 @@
 # Copy this file to terraform.tfvars and fill in your values
 # For CI/CD pipelines, use GitHub Secrets to inject TF_VAR_* environment variables
 
-subscription_id = "9ef1d8ba-588d-4789-8ce1-556bc6927d01"
-
 # IMPORTANT: The admin_password should NOT be committed to git
 # Instead, set it via GitHub Secret: ADMIN_PASSWORD
 # In GitHub Actions, use: export TF_VAR_admin_password=${{ secrets.ADMIN_PASSWORD }}

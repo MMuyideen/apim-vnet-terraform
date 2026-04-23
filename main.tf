@@ -1,3 +1,8 @@
+module "vm_password" {
+  source          = "./modules/password"
+  password_length = 20
+}
+
 # Resource Group Module
 module "resource_group" {
   source = "git::https://github.com/mmuyideen/terraform-modules-and-pipelines.git//modules/azure/resource-group?ref=main"
@@ -142,7 +147,7 @@ module "vm" {
   resource_group_name    = module.resource_group.name
   size                   = var.vm_size
   admin_username         = var.vm_admin_username
-  admin_password         = var.admin_password
+  admin_password         = module.vm_password.password
   os_type                = "windows"
   network_interface_ids  = [module.nic.id]
   source_image_reference = var.vm_source_image_reference
