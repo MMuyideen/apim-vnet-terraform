@@ -1,0 +1,27 @@
+name: APIM VNet Deployment
+
+on:
+  push:
+    branches: [main]
+    paths: ['**.tf', '.github/workflows/deploy.yml']
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Terraform action'
+        required: true
+        default: 'plan'
+        type: choice
+        options: [plan, apply, destroy]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  terraform:
+    uses: mmuyideen/terraform-modules-and-pipelines/.github/workflows/terraform-ci.yml@main
+    with:
+      cloud_provider: azure
+      action: ${{ inputs.action || 'plan' }}
+      environment: dev
+    secrets: inherit
