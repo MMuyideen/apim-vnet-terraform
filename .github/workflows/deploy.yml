@@ -23,7 +23,7 @@ jobs:
     with:
       cloud_provider: azure
       action: ${{ inputs.action || 'plan' }}
-      var_files: -var-file=terraform.tfvars
+      var_file: -var-file=terraform.tfvars
       backend_config: 
         -backend-config=resource_group_name=terraform-backend-rg \
         -backend-config=storage_account_name=deenterraformstate \
