@@ -12,7 +12,7 @@ subscription_id = "9ef1d8ba-588d-4789-8ce1-556bc6927d01"
 resource_group_name = "morex-resource-group"
 location            = "UK South"
 
-vnet_name         = "morex-vnet"
+vnet_name          = "morex-vnet"
 vnet_address_space = ["10.0.0.0/16"]
 
 subnets = [
@@ -28,10 +28,10 @@ subnets = [
 
 nsg_name = "shared-nsg"
 
-apim_name               = "deen-apim-pes"
-apim_publisher_name     = "morex-publisher"
-apim_publisher_email    = "publisher@morex.com"
-apim_sku_name           = "Developer_1"
+apim_name                 = "deen-apim-pes"
+apim_publisher_name       = "morex-publisher"
+apim_publisher_email      = "publisher@morex.com"
+apim_sku_name             = "Developer_1"
 apim_virtual_network_type = "Internal"
 
 apim_api_name         = "swagger-petstore-openapi-3-0"
@@ -41,11 +41,11 @@ apim_api_swagger_url  = "https://petstore3.swagger.io/api/v3/openapi.json"
 
 dns_zone_name = "azure-api.net"
 
-vm_name              = "morex-vm"
-vm_size              = "Standard_B2ms"
-vm_admin_username    = "adminuser"
-vm_public_ip_name    = "vm-public-ip"
-nic_name             = "vm-nic"
+vm_name           = "morex-vm"
+vm_size           = "Standard_B2ms"
+vm_admin_username = "adminuser"
+vm_public_ip_name = "vm-public-ip"
+nic_name          = "vm-nic"
 
 # Tags to apply to all resources
 tags = {

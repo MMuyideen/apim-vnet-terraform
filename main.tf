@@ -46,13 +46,13 @@ resource "azurerm_subnet_network_security_group_association" "vm_subnet_nsg" {
 module "apim" {
   source = "git::https://github.com/mmuyideen/terraform-modules-and-pipelines.git//modules/azure/apim?ref=main"
 
-  name                          = var.apim_name
-  location                      = module.resource_group.location
-  resource_group_name           = module.resource_group.name
-  publisher_name                = var.apim_publisher_name
-  publisher_email               = var.apim_publisher_email
-  sku_name                      = var.apim_sku_name
-  virtual_network_type          = var.apim_virtual_network_type
+  name                 = var.apim_name
+  location             = module.resource_group.location
+  resource_group_name  = module.resource_group.name
+  publisher_name       = var.apim_publisher_name
+  publisher_email      = var.apim_publisher_email
+  sku_name             = var.apim_sku_name
+  virtual_network_type = var.apim_virtual_network_type
   virtual_network_configuration = {
     subnet_id = module.vnet.subnet_ids["apim-subnet"]
   }
@@ -120,13 +120,13 @@ module "public_ip" {
 module "nic" {
   source = "git::https://github.com/mmuyideen/terraform-modules-and-pipelines.git//modules/azure/nic?ref=main"
 
-  name                   = var.nic_name
-  location               = module.resource_group.location
-  resource_group_name    = module.resource_group.name
-  subnet_id              = module.vnet.subnet_ids["vm-subnet"]
-  public_ip_address_id   = module.public_ip.id
-  nsg_id                 = module.nsg.id
-  tags                   = var.tags
+  name                 = var.nic_name
+  location             = module.resource_group.location
+  resource_group_name  = module.resource_group.name
+  subnet_id            = module.vnet.subnet_ids["vm-subnet"]
+  public_ip_address_id = module.public_ip.id
+  nsg_id               = module.nsg.id
+  tags                 = var.tags
 
   depends_on = [
     azurerm_subnet_network_security_group_association.vm_subnet_nsg

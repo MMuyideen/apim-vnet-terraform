@@ -70,8 +70,8 @@ variable "nsg_inbound_rules" {
   }))
   default = [
     {
-      name                  = "allow-rdp"
-      priority              = 100
+      name                   = "allow-rdp"
+      priority               = 100
       destination_port_range = "3389"
     },
     {
