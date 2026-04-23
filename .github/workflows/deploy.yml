@@ -23,5 +23,10 @@ jobs:
     with:
       cloud_provider: azure
       action: ${{ inputs.action || 'plan' }}
-      environment: dev
+      var_files: -var-file=terraform.tfvars
+      backend_config: 
+        -backend-config=resource_group_name=terraform-backend-rg \
+        -backend-config=storage_account_name=deenterraformstate \
+        -backend-config=container_name=tfstate \
+        -backend-config=key=apim-vnet-terraform.tfstate
     secrets: inherit
