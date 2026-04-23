@@ -1,6 +1,6 @@
 # Resource Group Module
 module "resource_group" {
-  source = "mmuyideen/terraform-modules-and-pipelines.git//modules/azure/resource-group"
+  source = "git::https://github.com/mmuyideen/terraform-modules-and-pipelines.git//modules/azure/resource-group?ref=main"
 
   name     = var.resource_group_name
   location = var.location
