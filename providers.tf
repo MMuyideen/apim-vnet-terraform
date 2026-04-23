@@ -13,5 +13,5 @@ provider "azurerm" {
       prevent_deletion_if_contains_resources = false
     }
   }
-  # subscription_id = var.subscription_id
+  subscription_id = var.subscription_id
 }
