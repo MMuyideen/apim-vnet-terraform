@@ -90,6 +90,7 @@ module "dns_zone" {
 
   name                = var.dns_zone_name
   resource_group_name = module.resource_group.name
+  virtual_network_id  = module.vnet.id
   dns_records = [
     {
       name    = var.apim_name
@@ -107,17 +108,6 @@ module "dns_zone" {
   tags = var.tags
 
   depends_on = [module.apim]
-}
-
-# VNet link created as a standalone resource to avoid plan-time count error
-# (the dns_zone module uses count = var.virtual_network_id != null ? 1 : 0,
-# which Terraform cannot evaluate when the VNet ID is unknown at plan time)
-resource "azurerm_private_dns_zone_virtual_network_link" "apim_dns_vnet_link" {
-  name                  = "${var.dns_zone_name}-vnet-link"
-  resource_group_name   = module.resource_group.name
-  private_dns_zone_name = module.dns_zone.name
-  virtual_network_id    = module.vnet.id
-  tags                  = var.tags
 }
 
 # Public IP Module for VM
@@ -140,6 +130,7 @@ module "nic" {
   resource_group_name  = module.resource_group.name
   subnet_id            = module.vnet.subnet_ids["vm-subnet"]
   public_ip_address_id = module.public_ip.id
+  nsg_id               = module.nsg.id
   tags                 = var.tags
 
   depends_on = [
