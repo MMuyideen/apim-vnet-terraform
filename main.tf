@@ -91,22 +91,20 @@ module "dns_zone" {
   name                = var.dns_zone_name
   resource_group_name = module.resource_group.name
   virtual_network_id  = module.vnet.id
-  dns_records = {
-    "apim_core" = {
+  dns_records = [
+    {
       name    = module.apim.name
       type    = "A"
       ttl     = 300
       records = module.apim.private_ip_addresses
     },
-    "apim_portal" = {
-      # Note: Ensure developer_portal_url is just the hostname, 
-      # not a full https:// URL
+    {
       name    = module.apim.developer_portal_url
       type    = "A"
       ttl     = 300
       records = module.apim.private_ip_addresses
     }
-  }
+  ]
   tags = var.tags
 
   depends_on = [module.apim]
