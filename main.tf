@@ -130,7 +130,6 @@ module "nic" {
   resource_group_name  = module.resource_group.name
   subnet_id            = module.vnet.subnet_ids["vm-subnet"]
   public_ip_address_id = module.public_ip.id
-  nsg_id               = module.nsg.id
   tags                 = var.tags
 
   depends_on = [
