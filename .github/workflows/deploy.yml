@@ -23,4 +23,6 @@ jobs:
     with:
       cloud_provider: azure
       action: ${{ inputs.action || 'plan' }}
-    secrets: inherit
+    secrets:
+      creds: ${{ secrets.AZURE_CREDENTIALS }}
+      TF_VAR_subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
